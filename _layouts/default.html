@@ -7,19 +7,140 @@
     <meta name="theme-color" content="#157878">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    <script src="assets/jquery-3.1.1.min.js"></script>
   </head>
   <body>
 
     <section class="page-header">
       <h1 class="project-name">Euro Coin Recognition</h1>
       <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
-      <a href="#" class="btn"><img src="assets/camera_icon.png"><br/>Upload a coin picture</a>
+      <form action="https://msebera.cz/vizeit/179" method="post" enctype="multipart/form-data" id="form">
+         <a id="formclick" href="#" class="btn">
+		<img src="assets/camera_icon.png"><br/>Upload a coin picture
+	 </a>
+         <input id="uploadimage" type="file" name="image">
+	 <input id="submit" type="submit" value="Recognize now!">
+      </form>
     </section>
 
     <section class="main-content">
-      <h2>Or choose from these coins</h2>
+	<h2>Or choose from these coins</h2>
+
+	<div class="coinsample"><img src="assets/samplecoins/43.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/39.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/32.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/20.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/4.png"></div>
+	<div class="coinsample"><img src="assets/samplecoins/1.jpeg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/24.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/1.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/4.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/5.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/31.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/38.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/17.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/8.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/34.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/7.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/42.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/40.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/11.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/3.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/21.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/27.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/26.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/3.png"></div>
+	<div class="coinsample"><img src="assets/samplecoins/10.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/9.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/28.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/29.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/1.png"></div>
+	<div class="coinsample"><img src="assets/samplecoins/23.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/2.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/16.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/30.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/41.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/22.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/25.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/13.jpg"></div>	
+	<div class="coinsample"><img src="assets/samplecoins/5.png"></div>
+	<div class="coinsample"><img src="assets/samplecoins/2.png"></div>
+	<div class="coinsample"><img src="assets/samplecoins/15.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/33.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/12.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/6.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/37.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/44.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/35.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/36.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/14.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/18.jpg"></div>
+	<div class="coinsample"><img src="assets/samplecoins/19.jpg"></div>
+
+	<div style="clear: both;">&nbsp;</div>
     </section>
+
+    <script type="text/javascript" src="https://stitastjoseph.github.io/Euro-coin-recognition/assets/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+	var lastResponse;
+
+	function uploadClick() {
+		$("#uploadimage").click();
+	}
+
+	var dataURLToBlob = function(dataURL) {
+	    var BASE64_MARKER = ';base64,';
+	    if (dataURL.indexOf(BASE64_MARKER) == -1) {
+	      var parts = dataURL.split(',');
+	      var contentType = parts[0].split(':')[1];
+	      var raw = decodeURIComponent(parts[1]);
+	
+	      return new Blob([raw], {type: contentType});
+	    }
+	
+	    var parts = dataURL.split(BASE64_MARKER);
+	    var contentType = parts[0].split(':')[1];
+	    var raw = window.atob(parts[1]);
+	    var rawLength = raw.length;
+	
+	    var uInt8Array = new Uint8Array(rawLength);
+	
+	    for (var i = 0; i < rawLength; ++i) {
+	      uInt8Array[i] = raw.charCodeAt(i);
+	    }
+	
+	    return new Blob([uInt8Array], {type: contentType});
+	}
+
+	$(document).ready(function(){
+		$("#uploadimage").hide();
+		$("#submit").hide();
+		$("#formclick").click(function(){
+			uploadClick();
+		});
+		$("#uploadimage").change(function(){
+			console.log($("#uploadimage").val());
+			var apiData = new FormData(document.forms[0]);
+			//apiData.append( "attachment[file]", dataURLToBlob);
+			$.ajax({
+				type: "POST",
+				dataType: "json",
+				mimeType: "multipart/form-data",
+				cache: false,
+				contentType: false,
+				processData: false,
+				data: apiData,
+				url: "https://msebera.cz/vizeit/179",
+				headers: {
+					"Authorization": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOjExMywiZXhwIjoxNDkzNjM3MDM4LCJpYXQiOjE0ODU4NjEwMzh9.8xi6ahqkGvhaxcI6gZpY2SIM5sH-Yg5ScI9U07P687s"
+				},
+				always: function(data) {
+					lastResponse = $.parseJSON(data);
+					alert("Was recognized as: " + lastResponse.prediction);
+				}
+			});
+		});
+	});
+    </script>
 
   </body>
 </html>

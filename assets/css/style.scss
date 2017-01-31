@@ -2,3 +2,9 @@
 ---
 
 @import "{{ site.theme }}";
+
+.coinsample {
+	height: 250px;
+	width: 250px;
+	float: left;
+}
