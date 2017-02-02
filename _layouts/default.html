@@ -149,7 +149,7 @@
 				} else {
 					console.log("failure");
 				}
-				dialog.close();
+				dialog.dialog('close');
 			});
 		});
 		$("#uploadimage").change(function(){
@@ -174,8 +174,8 @@
 					dialog = $("#dialog-content").dialog({
 						autoOpen: true,
 						title: "Guess the answer",
-						width: $(window).width(),
-						height: $(window).height()
+						width: 600,
+						height: 400
 					});
 				});
 		});
