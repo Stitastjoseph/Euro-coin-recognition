@@ -37,6 +37,14 @@
 	</div>
     </div>
 
+    <div id="dialog-success">
+	<img src="assets/answer_right.png">
+    </div>
+
+    <div id="dialog-failure">
+	<img src="assets/answer_wrong.png">
+    </div>
+
     <section class="main-content">
 	<h2>Or choose from these coins</h2>
 
@@ -141,15 +149,27 @@
 		$("#formclick").click(function(){
 			uploadClick();
 		});
+		$("#dialog-success img").click(function(){ dialog.dialog('close'); });
+		$("#dialog-failure img").click(function(){ dialog.dialog('close'); });
 		$(".coin").each(function(){
 			$(this).click(function(){
 				console.log($(this).text());
+				dialog.dialog('close');
 				if ( $(this).text() === last.prediction ) {
 					console.log("success");
+					dialog = $("#dialog-success").dialog({
+						autoOpen: true,
+						height: 250,
+						width: 250
+					});
 				} else {
 					console.log("failure");
+					dialog = $("#dialog-failure").dialog({
+						autoOpen: true,
+						height: 250,
+						width: 250
+					});
 				}
-				dialog.dialog('close');
 			});
 		});
 		$("#uploadimage").change(function(){

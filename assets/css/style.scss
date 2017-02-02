@@ -59,3 +59,9 @@ body.loading .modal {
     padding: 10px;
     text-align: center;
 }
+
+#dialog-success img, #dialog-failure img {
+	width: 226px;
+	height: 226px;
+	margin: 0 auto;
+}
