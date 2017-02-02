@@ -31,3 +31,27 @@ body.loading {
 body.loading .modal {
     display: block;
 }
+
+#dialog-content {
+	width: 600px;
+	height: 300px;
+}
+.coins-box {
+	clear: both;
+	border: 1px solid black;
+	border-width: 1px 0 0 0;
+}
+
+.coin {
+	width: 32px;
+	height: 32px;
+	margin: 5px;
+	text-size: 20px;
+	border: 2px;
+	border-color: black;
+	border-radius: 70px;
+	-moz-border-radius: 70px; 
+	-webkit-border-radius: 70px;
+	float: left;
+}
+
