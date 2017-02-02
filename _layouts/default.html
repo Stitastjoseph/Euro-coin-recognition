@@ -169,7 +169,7 @@
 					});
 				} else {
 					console.log("failure");
-					$("#dialog-failure .explanation").text("It really is " + last.prediction + " coin");
+					$("#dialog-failure .explanation").text("It really is " + (last.prediction === undefined ? "unknown" : last.prediction) + " coin");
 					dialog = $("#dialog-failure").dialog({
 						autoOpen: true,
 						height: 350,
