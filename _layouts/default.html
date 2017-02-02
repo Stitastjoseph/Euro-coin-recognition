@@ -111,6 +111,13 @@
 	    return new Blob([uInt8Array], {type: contentType});
 	}
 
+	$body = $("body");
+
+	$(document).on({
+	     ajaxStart: function() { $body.addClass("loading");     },
+	     ajaxStop: function() {  $body.removeClass("loading");  }    
+	});	
+
 	$(document).ready(function(){
 		$("#uploadimage").hide();
 		$("#submit").hide();
@@ -140,6 +147,8 @@
 		});
 	});
     </script>
+
+	<div class="modal"><!-- Place at bottom of page --></div>
 
   </body>
 </html>
