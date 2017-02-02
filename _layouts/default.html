@@ -146,6 +146,8 @@
 		$("#uploadimage").hide();
 		$("#submit").hide();
 		$("#dialog-content").hide();
+		$("#dialog-success").hide();
+		$("#dialog-failure").hide();
 		$("#formclick").click(function(){
 			uploadClick();
 		});
@@ -159,15 +161,15 @@
 					console.log("success");
 					dialog = $("#dialog-success").dialog({
 						autoOpen: true,
-						height: 250,
-						width: 250
+						height: 350,
+						width: 350
 					});
 				} else {
 					console.log("failure");
 					dialog = $("#dialog-failure").dialog({
 						autoOpen: true,
-						height: 250,
-						width: 250
+						height: 350,
+						width: 350
 					});
 				}
 			});
