@@ -81,6 +81,7 @@
     <script type="text/javascript" src="https://stitastjoseph.github.io/Euro-coin-recognition/assets/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript">
 	var lastResponse;
+	var last;
 
 	function uploadClick() {
 		$("#uploadimage").click();
@@ -133,6 +134,7 @@
 					"Authorization": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOjExMywiZXhwIjoxNDkzNjM3MDM4LCJpYXQiOjE0ODU4NjEwMzh9.8xi6ahqkGvhaxcI6gZpY2SIM5sH-Yg5ScI9U07P687s"
 				},
 				always: function(data) {
+					last = data;
 					lastResponse = $.parseJSON(data);
 					alert("Was recognized as: " + lastResponse.prediction);
 				}
