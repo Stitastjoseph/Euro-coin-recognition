@@ -97,6 +97,7 @@
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript">
 	var last;
+	var dialog;
 
 	function uploadClick() {
 		$("#uploadimage").click();
@@ -140,6 +141,17 @@
 		$("#formclick").click(function(){
 			uploadClick();
 		});
+		$(".coin").each(function(){
+			$(this).click(function(){
+				console.log($(this).text());
+				if ( $(this).text() === last.prediction ) {
+					console.log("success");
+				} else {
+					console.log("failure");
+				}
+				dialog.close();
+			});
+		});
 		$("#uploadimage").change(function(){
 			console.log($("#uploadimage").val());
 			var apiData = new FormData(document.forms[0]);
@@ -159,11 +171,11 @@
 				always(function(data) {
 					last = data;
 					console.log("Was recognized as: " + data.prediction);
-					$("#dialog-content").dialog({
+					dialog = $("#dialog-content").dialog({
 						autoOpen: true,
 						title: "Guess the answer",
-						width: 600,
-						height: 400
+						width: $(window).width(),
+						height: $(window).height()
 					});
 				});
 		});
