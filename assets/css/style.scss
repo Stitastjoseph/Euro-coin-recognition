@@ -40,18 +40,22 @@ body.loading .modal {
 	clear: both;
 	border: 1px solid black;
 	border-width: 1px 0 0 0;
+	padding: 20px;
+	margin: 20px;
 }
 
 .coin {
-	width: 32px;
-	height: 32px;
-	margin: 5px;
-	text-size: 20px;
-	border: 2px;
-	border-color: black;
-	border-radius: 70px;
-	-moz-border-radius: 70px; 
-	-webkit-border-radius: 70px;
-	float: left;
+    width: 52px;
+    margin: 10px;
+    font-size: 20px;
+    border: 2px;
+    border-color: black;
+    border-radius: 70px;
+    -moz-border-radius: 70px;
+    -webkit-border-radius: 100px;
+    float: left;
+    background: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
 }
-

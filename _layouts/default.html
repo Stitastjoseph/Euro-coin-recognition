@@ -94,7 +94,6 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script type="text/javascript">
-	var lastResponse;
 	var last;
 
 	function uploadClick() {
@@ -135,6 +134,7 @@
 	$(document).ready(function(){
 		$("#uploadimage").hide();
 		$("#submit").hide();
+		$("#dialog-content").hide();
 		$("#formclick").click(function(){
 			uploadClick();
 		});
@@ -156,7 +156,13 @@
 				}}).
 				always(function(data) {
 					last = data;
-					alert("Was recognized as: " + data.prediction);
+					console.log("Was recognized as: " + data.prediction);
+					$("#dialog-content").dialog({
+						autoOpen: true,
+						title: "Guess the answer",
+						width: 600,
+						height: 400
+					});
 				});
 		});
 	});
