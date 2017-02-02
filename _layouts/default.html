@@ -161,7 +161,7 @@
 				dialog.dialog('close');
 				if ( $(this).text() === last.prediction ) {
 					console.log("success");
-					$("#dialog-success .explanation").text("It really is " + last.prediction + " coin");
+					$("#dialog-success .explanation").text("It is a " + last.prediction + " coin");
 					dialog = $("#dialog-success").dialog({
 						autoOpen: true,
 						height: 350,
@@ -169,7 +169,7 @@
 					});
 				} else {
 					console.log("failure");
-					$("#dialog-failure .explanation").text("It really is " + (last.prediction === undefined ? "unknown" : last.prediction) + " coin");
+					$("#dialog-failure .explanation").text("It is a " + (last.prediction === undefined ? "unknown" : last.prediction) + " coin");
 					dialog = $("#dialog-failure").dialog({
 						autoOpen: true,
 						height: 350,
