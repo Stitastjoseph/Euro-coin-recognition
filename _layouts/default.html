@@ -108,6 +108,8 @@
 <script type="text/javascript">
     var last;
     var dialog;
+    var audioRight;
+    var audioWrong;
 
     function uploadClick() {
         $("#uploadimage").click();
@@ -159,6 +161,13 @@
         for (var i = coinsamplecontainer.children.length; i >= 0; i--) {
             coinsamplecontainer.appendChild(coinsamplecontainer.children[Math.random() * i | 0]);
         }
+        // Prepare audio
+        audioRight = document.createElement('audio');
+        audioRight.setAttribute('src', 'https://stitastjoseph.github.io/Euro-coin-recognition/assets/answer_right.wav');
+
+        audioWrong = document.createElement('audio');
+        audioWrong.setAttribute('src', 'https://stitastjoseph.github.io/Euro-coin-recognition/assets/answer_wrong.wav');
+
         // hide items that are ajax
         $("#uploadimage").hide();
         $("#submit").hide();
@@ -182,6 +191,7 @@
                 dialog.dialog('close');
                 if ($(this).text() === last.prediction) {
                     console.log("success");
+                    audioRight.play();
                     $("#dialog-success .explanation").text("It is a " + last.prediction + " coin");
                     dialog = $("#dialog-success").dialog({
                         autoOpen: true,
@@ -190,6 +200,7 @@
                     });
                 } else {
                     console.log("failure");
+                    audioWrong.play();
                     $("#dialog-failure .explanation").text("It is a " + (last.prediction === undefined ? "unknown" : last.prediction) + " coin");
                     dialog = $("#dialog-failure").dialog({
                         autoOpen: true,
